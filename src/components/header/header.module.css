@@ -1,0 +1,26 @@
+.header{
+    width: 100%;
+    position: fixed;
+    background-color: #435334;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    flex-basis: 67%;
+}
+
+.buttons{
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    font-size: 30px;
+}
+
+.icons{
+    font-size: 30px;
+    display: flex;
+    padding-right: 2%;
+    gap: 37px;
+    margin-left: auto;
+}
