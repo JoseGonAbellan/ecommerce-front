@@ -1,0 +1,16 @@
+.carrouselArea{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    gap: 30px;
+    border: 10px solid #CEDEBD;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #CEDEBD;
+}
+
+.productCarrousel{
+    display: flex;
+    align-items: center;
+}

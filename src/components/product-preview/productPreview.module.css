@@ -1,0 +1,9 @@
+.productPreview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productPreviewImage{
+    width: 40%;
+}
