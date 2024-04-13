@@ -1,0 +1,32 @@
+.productsArea{
+    padding: 200px 50px 0;
+}
+
+.titleProducts{
+    font-size: 50px;
+}
+
+.productList{
+    display: flex;
+}
+
+.productsFilter{
+    background-color: #CEDEBD;
+    width: 35%;
+}
+
+.productsWithFilter{
+    display: flex;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.filterTitles{
+    font-weight: bold;
+    padding-right: 10px;
+}

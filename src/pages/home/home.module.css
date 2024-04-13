@@ -1,0 +1,13 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.categoriesButtons{
+    display: flex;
+    height: 240px;
+    justify-content: space-between;
+    width: 45%;
+}

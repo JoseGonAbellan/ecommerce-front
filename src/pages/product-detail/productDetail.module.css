@@ -1,0 +1,12 @@
+.container{
+    padding: 150px;
+}
+
+.productDetail{
+    display: flex;
+    gap: 150px;
+}
+
+.productImage{
+    width: 45%;
+}
