@@ -9,6 +9,7 @@
 
 .logo{
     flex-basis: 67%;
+    cursor: pointer;
 }
 
 .logoImage{
@@ -22,6 +23,7 @@
     margin-left: auto;
     font-size: 30px;
     color: #FAF1E4;
+    align-items: center;
 }
 
 .icons{
@@ -31,4 +33,9 @@
     gap: 37px;
     margin-left: auto;
     color: #FAF1E4;
+}
+
+.links{
+    text-decoration: none;
+    color: inherit; 
 }

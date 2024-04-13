@@ -1,0 +1,10 @@
+.menuHidden{
+    display: none;
+}
+
+.menu{
+    position: absolute;
+    top: 135px;
+    right: 10px;
+    background-color: white;
+}

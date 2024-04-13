@@ -3,14 +3,18 @@ import { Product, ProductType } from "../../common/types/product";
 import { ProductPreview } from "../../components/product-preview/ProductPreview";
 import { getAllProducts } from "../../services/product-service";
 import styles from "./productList.module.css";
+import { useParams } from "react-router-dom";
 
 
 export const ProductList = () => {
+  const {productType} = useParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [name, setName] = useState<string>();
-  const [category, setCategory] = useState<ProductType | null>(null);
+  const [category, setCategory] = useState<ProductType | null>(productType ? productType as unknown as ProductType : null);
   const [price, setPrice] = useState<number>(0);
-  
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [existNextPage, setExistNextPage] = useState<boolean>(true);
+  console.log(productType, "PRODUCT TYPE")
   const handleCategoryType = (ev: any, type: ProductType) => {
     if(ev.target.checked){
       setCategory(type)
@@ -19,9 +23,27 @@ export const ProductList = () => {
     }
   };
 
+  const handleNextPage = () => {
+    if(existNextPage){
+      setCurrentPage(currentPage+1)
+    }
+  };
+  const handlePreviousPage = () => {
+    if(currentPage>1){
+      setCurrentPage(currentPage-1)
+    }
+  };
+
   useEffect(() => {
-    getAllProducts({pageSize: 20, productName: name, productType: category, price: price}).then((response) => setProducts(response));
-  },[name, category, price]);
+    getAllProducts({pageSize: 10, productName: name, productType: category, price: price, page: currentPage}).then((response) => {
+      if(response.length !== 0){
+       setProducts(response)
+       setExistNextPage(true) 
+      } else{
+        setExistNextPage(false)
+      }
+    });
+  },[name, category, price, currentPage]);
 
   return (
     <div className={styles.productsArea}> 
@@ -34,19 +56,19 @@ export const ProductList = () => {
             <label className={styles.filterTitles}>Categoría</label>
             <div>
               <label htmlFor="category">Juegos de mesa</label>
-              <input type="checkbox" id="category" name="category" onChange={(ev) => handleCategoryType(ev, ProductType.BOARD_GAMES)}/>
+              <input type="checkbox" id="category" name="category" checked={category === ProductType.BOARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.BOARD_GAMES)}/>
             </div>
             <div>
               <label htmlFor="category">Juegos de cartas</label>
-              <input type="checkbox" id="category" name="category" onChange={(ev) => handleCategoryType(ev, ProductType.CARD_GAMES)}/>
+              <input type="checkbox" id="category" name="category" checked={category === ProductType.CARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.CARD_GAMES)}/>
             </div>
             <div>
               <label htmlFor="category">Juegos de rol</label>
-              <input type="checkbox" id="category" name="category" onChange={(ev) => handleCategoryType(ev, ProductType.ROLE_GAMES)}/>
+              <input type="checkbox" id="category" name="category" checked={category === ProductType.ROLE_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.ROLE_GAMES)}/>
             </div>
             <div>
               <label htmlFor="category">Merchandising</label>
-              <input type="checkbox" id="category" name="category" onChange={(ev) => handleCategoryType(ev, ProductType.MERCHANDISING)}/>
+              <input type="checkbox" id="category" name="category" checked={category === ProductType.MERCHANDISING} onChange={(ev) => handleCategoryType(ev, ProductType.MERCHANDISING)}/>
             </div>
             <div>
               <label htmlFor="price">Precio</label>
@@ -59,6 +81,10 @@ export const ProductList = () => {
         {products.map((product)=>{
         return <ProductPreview productImageURL={product.productImageURL} productName={product.productName} price={product.price} productID={product.productID} key={product.productID} />
       })}
+      </div>
+      <div>
+        <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
       </div>
       </div>
     </div>
