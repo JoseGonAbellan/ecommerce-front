@@ -21,7 +21,10 @@ const {goHomePage} = useCustomRouter()
       </div>
       <div className={styles.icons}>
         <FiShoppingCart />
-        <FiUser onClick={() => setOpenUserMenu(!openUserMenu)}/>
+        <div>
+          <FiUser onClick={() => setOpenUserMenu(!openUserMenu)}/>
+          <Link to={Routes.LOGIN_PAGE}>Login</Link>
+        </div>
         </div>
         <UserMenu open={openUserMenu}/>
     </div>

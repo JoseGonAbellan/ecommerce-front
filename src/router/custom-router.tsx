@@ -8,6 +8,9 @@ export interface CustomRouter {
     goProductsPage: (productType?: ProductType) => void;
     goProductDetailPage: (id: number) => void;
     goContactPage: () => void;
+    goLoginPage: () => void;
+    goSignUpPage: () => void;
+    goUserDetailPage: () => void;
 }
 
 export const useCustomRouter= (): CustomRouter => {
@@ -29,6 +32,15 @@ export const useCustomRouter= (): CustomRouter => {
         },
         goContactPage(){
             return navigate(Routes.CONTACT_PAGE)
+        },
+        goLoginPage(){
+            return navigate(Routes.LOGIN_PAGE)
+        },
+        goSignUpPage(){
+            return navigate(Routes.SIGN_UP_PAGE)
+        },
+        goUserDetailPage(){
+            return navigate(Routes.USER_DETAIL_PAGE)
         }
 
     }

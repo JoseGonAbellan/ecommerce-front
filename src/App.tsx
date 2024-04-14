@@ -5,6 +5,9 @@ import { ProductList } from './pages/products-list/ProductList';
 import { Routes as RoutesEnum } from './router/routes';
 import { ProductDetail } from "./pages/product-detail/ProductDetail";
 import { Contact } from "./pages/contact/Contact";
+import { Login } from "./pages/login/Login";
+import { SignUp } from "./pages/sign-up/SignUp";
+import { UserDetail } from "./pages/user-detail/UserDetail";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
     <Route path={`${RoutesEnum.PRODUCTS_PAGE}/:productType?`} element={<ProductList />}/>
     <Route path={`${RoutesEnum.PRODUCT_DETAIL_PAGE}/:id`} element={<ProductDetail />}/>
     <Route path={RoutesEnum.CONTACT_PAGE} element={<Contact />}/>
+    <Route path={RoutesEnum.LOGIN_PAGE} element={<Login />}/>
+    <Route path={RoutesEnum.SIGN_UP_PAGE} element={<SignUp />}/>
+    <Route path={RoutesEnum.USER_DETAIL_PAGE} element={<UserDetail />}/>
     </Routes>
     </BrowserRouter>
     </>
