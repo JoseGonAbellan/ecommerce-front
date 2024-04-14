@@ -5,9 +5,11 @@ import { Routes } from "../../router/routes";
 import { useCustomRouter } from "../../router/custom-router";
 import { useState } from "react";
 import { UserMenu } from "../user-menu/UserMenu";
+import { useUser } from "../../context/user-context";
 export const Header = () => {
 const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
-const {goHomePage} = useCustomRouter()
+const {goHomePage} = useCustomRouter();
+const {user} = useUser();
   return (
     <div className={styles.header}>
       <div className={styles.logo} onClick={goHomePage}>
@@ -23,7 +25,8 @@ const {goHomePage} = useCustomRouter()
         <FiShoppingCart />
         <div>
           <FiUser onClick={() => setOpenUserMenu(!openUserMenu)}/>
-          <Link to={Routes.LOGIN_PAGE}>Login</Link>
+          {user ? <p>Bienvenido {user.userName}</p> : <Link to={Routes.LOGIN_PAGE}>Login</Link>}
+          
         </div>
         </div>
         <UserMenu open={openUserMenu}/>

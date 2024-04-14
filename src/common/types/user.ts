@@ -8,7 +8,7 @@ export type User = {
     userName: string;
     userLastName: string;
     userEmail: string;
-    userPassword: string;
+    userPassword?: string;
     userAddress: string;
     userPhone: number;
     rol: RolEnum;

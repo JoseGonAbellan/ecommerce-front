@@ -1,15 +1,15 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 import { SimpleUser } from '../../common/types/user';
+import { useUser } from '../../context/user-context';
+import { useCustomRouter } from '../../router/custom-router';
 import { Routes } from '../../router/routes';
 import { loginUser } from '../../services/user-service';
 import { validationSchema } from './validation-schema';
-import { useUser } from '../../context/user-context';
-import { useCustomRouter } from '../../router/custom-router';
 
 export const Login = () => {
-  const {setUser, user} = useUser();
-  const {goUserDetailPage} = useCustomRouter();
+  const {setUser} = useUser();
+  const {goUserDetailPage } = useCustomRouter();
   const handleSubmit = async (values: SimpleUser, {setSubmitting, resetForm}: FormikHelpers<SimpleUser>) => {
   try {
    const userLogged = await loginUser(values);

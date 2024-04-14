@@ -4,17 +4,19 @@ import { ProductPreview } from "../../components/product-preview/ProductPreview"
 import { getAllProducts } from "../../services/product-service";
 import styles from "./productList.module.css";
 import { useParams } from "react-router-dom";
+import { useUser } from "../../context/user-context";
 
 
 export const ProductList = () => {
   const {productType} = useParams();
+  const {user} = useUser();
   const [products, setProducts] = useState<Product[]>([]);
   const [name, setName] = useState<string>();
   const [category, setCategory] = useState<ProductType | null>(productType ? productType as unknown as ProductType : null);
   const [price, setPrice] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [existNextPage, setExistNextPage] = useState<boolean>(true);
-  console.log(productType, "PRODUCT TYPE")
+  console.log(user, "user")
   const handleCategoryType = (ev: any, type: ProductType) => {
     if(ev.target.checked){
       setCategory(type)
