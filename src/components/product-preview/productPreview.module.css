@@ -2,8 +2,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+
+    width: 240px; /* Ancho fijo para cada elemento */
+    height: auto; /* Altura automática según el contenido */
+    margin-right: 10px; /* Espacio entre elementos, ajusta según sea necesario */
 }
 
 .productPreviewImage{
     width: 40%;
+}
+
+.productPreviewImage:hover {
+  transform: scale(1.1); /* Aumenta el tamaño al 110% */
+  transition: transform 0.2s ease; /* Agrega una transición suave */
+}
+
+.productName{
+  font-weight: bold;
+  text-align: center;
+}
+
+.price{
+  font-style: italic;
+  text-align: center;
 }

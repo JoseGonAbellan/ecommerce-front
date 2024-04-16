@@ -12,7 +12,7 @@
 
 .productsFilter{
     background-color: #CEDEBD;
-    width: 35%;
+    flex-basis: 10%;
 }
 
 .productsWithFilter{
@@ -29,4 +29,14 @@
 .filterTitles{
     font-weight: bold;
     padding-right: 10px;
+    padding-top: 5px;
+}
+
+.priceFilter{
+    display: flex;
+    flex-direction: column;
+}
+
+.priceFilterNum{
+    font-style: italic;
 }

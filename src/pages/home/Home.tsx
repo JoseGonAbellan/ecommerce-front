@@ -20,9 +20,9 @@ export const Home = () => {
       <ProductCarrousel products={products} title="Últimas Novedades"/>
       <div className={styles.categoriesButtons}>
         <CategoryButton title="Juegos de Mesa" color="#9EB384" iconUrl='/images/bg-icon.png' onClick={() => goProductsPage(ProductType.BOARD_GAMES)}/>
-        <CategoryButton title="Juegos de Cartas" color="#435334" iconUrl='/images/bg-icon.png' onClick={() => goProductsPage(ProductType.CARD_GAMES)}/>
-        <CategoryButton title="Juegos de Rol" color="#9EB384" iconUrl='/images/bg-icon.png' onClick={() => goProductsPage(ProductType.ROLE_GAMES)}/>
-        <CategoryButton title="Merchandising" color="#435334" iconUrl='/images/bg-icon.png' onClick={() => goProductsPage(ProductType.MERCHANDISING)}/>
+        <CategoryButton title="Juegos de Cartas" color="#435334" iconUrl='/images/cg-icon.png' onClick={() => goProductsPage(ProductType.CARD_GAMES)}/>
+        <CategoryButton title="Juegos de Rol" color="#9EB384" iconUrl='/images/rg-icon.png' onClick={() => goProductsPage(ProductType.ROLE_GAMES)}/>
+        <CategoryButton title="Merchandising" color="#435334" iconUrl='/images/merchan-icon.png' onClick={() => goProductsPage(ProductType.MERCHANDISING)}/>
       </div>
     </div>
   );

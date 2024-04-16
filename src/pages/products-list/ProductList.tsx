@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Product, ProductType } from "../../common/types/product";
 import { ProductPreview } from "../../components/product-preview/ProductPreview";
+import { useUser } from "../../context/user-context";
 import { getAllProducts } from "../../services/product-service";
 import styles from "./productList.module.css";
-import { useParams } from "react-router-dom";
-import { useUser } from "../../context/user-context";
 
 
 export const ProductList = () => {
@@ -16,7 +16,6 @@ export const ProductList = () => {
   const [price, setPrice] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [existNextPage, setExistNextPage] = useState<boolean>(true);
-  console.log(user, "user")
   const handleCategoryType = (ev: any, type: ProductType) => {
     if(ev.target.checked){
       setCategory(type)
@@ -72,22 +71,24 @@ export const ProductList = () => {
               <label htmlFor="category">Merchandising</label>
               <input type="checkbox" id="category" name="category" checked={category === ProductType.MERCHANDISING} onChange={(ev) => handleCategoryType(ev, ProductType.MERCHANDISING)}/>
             </div>
-            <div>
-              <label htmlFor="price">Precio</label>
+              <label className={styles.filterTitles} htmlFor="price">Precio</label>
+            <div className={styles.priceFilter}>
               <input type="range" id="price" name="price" min={0} max={200} value={price} onChange={(ev) => setPrice(parseInt(ev.target.value))}/>
-              <p>{price}</p>
+              <p className={styles.priceFilterNum}>{price} €</p>
             </div>
           </form>
         </div>
-        <div className= {styles.productList}>
+        <div>
+          <div className= {styles.productList}>
         {products.map((product)=>{
         return <ProductPreview productImageURL={product.productImageURL} productName={product.productName} price={product.price} productID={product.productID} key={product.productID} />
       })}
       </div>
       <div>
-        <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
+        <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
       </div>
+        </div>
       </div>
     </div>
   );

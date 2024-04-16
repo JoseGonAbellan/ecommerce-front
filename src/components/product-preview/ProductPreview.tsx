@@ -7,8 +7,8 @@ export const ProductPreview: React.FC<SimpleProduct> = ({productImageURL, produc
   return (
     <div className={styles.productPreview} onClick={() => goProductDetailPage(productID)}>
       <img src={productImageURL} alt= {`Imagen del producto ${productName}`} className={styles.productPreviewImage} />
-      <p>{productName}</p>
-      <p>{price}</p>
+      <p className={styles.productName}>{productName}</p>
+      <p className={styles.price}>{price} €</p>
     </div>
   );
 }

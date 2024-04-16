@@ -7,13 +7,14 @@
 }
 
 .logo{
-    flex-basis: 67%;
-    cursor: pointer;
+    flex-basis: 40%;
+    
 }
 
 .logoImage{
-    width: 6%;
-    padding: 10px 0 18px;
+    width: 35%;
+    padding: 10px 20px 18px;
+    cursor: pointer;
 }
 
 .buttons{
@@ -25,16 +26,34 @@
     align-items: center;
 }
 
-.icons{
-    font-size: 30px;
+.iconsArea{
+    font-size: 25px;
     display: flex;
     padding-right: 2%;
     gap: 37px;
-    margin-left: auto;
+    margin-left: 5%;
     color: #FAF1E4;
+}
+
+.icons{
+    cursor: pointer;
 }
 
 .links{
     text-decoration: none;
     color: inherit; 
+}
+
+.links:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.loginButton, .userButton{
+    margin-left: 20px;
+    color: #FAF1E4;
+    text-decoration: none;
+}
+.userButton{
+    font-size: 60%;
 }

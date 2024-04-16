@@ -12,23 +12,19 @@ const {goHomePage} = useCustomRouter();
 const {user} = useUser();
   return (
     <div className={styles.header}>
-      <div className={styles.logo} onClick={goHomePage}>
-        <img src={process.env.PUBLIC_URL + '/images/logoTienda.png'} className={styles.logoImage} />
+      <div className={styles.logo}>
+        <img src={process.env.PUBLIC_URL + '/images/logoTienda.png'} className={styles.logoImage} onClick={goHomePage}/>
       </div>
-      {/* <h5>Nombre de la tienda</h5> */}
       <div className={styles.buttons}>
         <Link to={Routes.PRODUCTS_PAGE} className={styles.links}>Productos</Link>
         <Link to={Routes.CONTACT_PAGE} className={styles.links}>Contacto</Link>
         <p>Sobre Nosotros</p>
       </div>
-      <div className={styles.icons}>
-        <FiShoppingCart />
-        <div>
-          <FiUser onClick={() => setOpenUserMenu(!openUserMenu)}/>
-          {user ? <p>Bienvenido {user.userName}</p> : <Link to={Routes.LOGIN_PAGE}>Login</Link>}
-          
-        </div>
-        </div>
+      <div className={styles.iconsArea}>
+        <FiShoppingCart className={styles.icons}/>
+        <FiUser className={styles.icons} onClick={() => setOpenUserMenu(!openUserMenu)}/>
+        {user ? <p className={styles.userButton}>Hola {user.userName}!</p> : <Link to={Routes.LOGIN_PAGE} className={styles.loginButton}>Login</Link>}
+      </div>
         <UserMenu open={openUserMenu}/>
     </div>
   );
