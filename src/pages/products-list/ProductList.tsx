@@ -84,9 +84,9 @@ export const ProductList = () => {
         return <ProductPreview productImageURL={product.productImageURL} productName={product.productName} price={product.price} productID={product.productID} key={product.productID} />
       })}
       </div>
-      <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
-        <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
+      <div className={styles.pageButtonsArea}>
+        <button className={styles.pageButtons} onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
+        <button className={styles.pageButtons} onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
       </div>
         </div>
       </div>

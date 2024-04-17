@@ -17,7 +17,7 @@ export const Contact = () => {
         type="email" 
         name="email"
         className={styles.email}
-        placeholder='Deja aquí tu mail para que podamos contactar contigo'
+        placeholder='Deja aquí tu mail'
       />
       <ValidationError 
         prefix="Email" 
