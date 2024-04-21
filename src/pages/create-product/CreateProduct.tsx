@@ -43,11 +43,11 @@ export const CreateProductPage = () => {
   },[id])
 
   if(user?.rol !== RolEnum.ADMIN) {
-    return <div  style={{padding: 200}}>No tienes permisos para ver esta página</div>
+    return <div>No tienes permisos para ver esta página</div>
   };
 
   return (
-    <div style={{padding: 200}}>
+    <div>
     <Formik
     enableReinitialize 
       initialValues={{

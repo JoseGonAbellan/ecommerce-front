@@ -1,0 +1,30 @@
+.containerForms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonUserForm{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.updateUserForm {
+    width: 50%;
+}
+
+.myOrdersContainer {
+    width: 50% ;
+}
+
+.myOrdersPagContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+
+.paginationButtons {
+    width: 18%;
+}

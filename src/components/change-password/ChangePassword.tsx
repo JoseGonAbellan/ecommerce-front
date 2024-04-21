@@ -4,7 +4,7 @@ import { changePasswordUser } from "../../common/types/user";
 import { useUser } from "../../context/user-context";
 import { changeUserPassword } from "../../services/user-service";
 import { validationSchemaChangePassword } from "./validationSchema";
-
+import styles from "./changePassword.module.css";
 
 
 
@@ -33,7 +33,7 @@ export const ChangePassword = () => {
     };
 
     return (
-        <div>
+        <div className={styles.changePassContainer}>
             <h2>Cambiar contraseña</h2>
             <Formik
                 initialValues={{
@@ -57,7 +57,7 @@ export const ChangePassword = () => {
                         <ErrorMessage name="newPassword" component="div" />
                     </div>
 
-                    <button type="submit">Enviar</button>
+                    <button className={styles.changePassButton} type="submit">Actualizar contraseña</button>
                 </Form>
             </Formik>
 

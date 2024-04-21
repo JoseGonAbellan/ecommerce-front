@@ -15,7 +15,7 @@ export const Home = () => {
   },[]);
 
   return (
-    <div style={{padding: 200}} className= {styles.home}>
+    <div className= {styles.home}>
       <ProductCarrousel products={products} title="Últimas Novedades"/>
       <div className={styles.categoriesButtons}>
         <CategoryButton title="Juegos de Mesa" color="#9EB384" iconUrl='/images/bg-icon.png' onClick={() => goProductsPage(ProductType.BOARD_GAMES)}/>

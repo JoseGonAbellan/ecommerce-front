@@ -17,7 +17,7 @@ export const ProcessOrder = () => {
     const [modalOpen, setModalOpen] = useState<boolean>(false)
 
     if (productsOrders.length === 0) {
-        return <div style={{ padding: 200 }}>No has añadido nada al carrito</div>
+        return <div>No has añadido nada al carrito</div>
     }
 
     const totalPrice = productsOrders.reduce((acc, product) => {
@@ -70,7 +70,7 @@ export const ProcessOrder = () => {
     }
 
     return (
-        <div style={{ padding: 200 }}>
+        <div>
             <h2>Resumen del Pedido</h2>
             <ul>
                 {productsOrders.map((productOrder) => (

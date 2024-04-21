@@ -51,8 +51,8 @@ export const UserMenu: React.FC<UserMenuProps> = ({ open, onClose }) => {
       <Link to={Routes.CONTACT_PAGE} >Contacto</Link>
       <Link to={Routes.HOME_PAGE} >Home</Link>
       {user && <Link to={Routes.USER_DETAIL_PAGE} >Mi perfil</Link>}
-      {user && user.rol === RolEnum.ADMIN && <p onClick={goAdminPage}>Panel de administrador</p>}
-      {user && <p onClick={handleCloseSession}>Salir de la sesión</p>}
+      {user && user.rol === RolEnum.ADMIN && <Link to={Routes.ADMIN_PAGE}>Panel de administrador</Link>}
+      {user && <p className={styles.logOut}onClick={handleCloseSession}>Salir de la sesión</p>}
 
 
     </div>

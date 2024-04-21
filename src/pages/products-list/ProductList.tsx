@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product, ProductType } from "../../common/types/product";
 import { ProductPreview } from "../../components/product-preview/ProductPreview";
-import { useUser } from "../../context/user-context";
 import { getAllProducts } from "../../services/product-service";
 import styles from "./productList.module.css";
 
 
 export const ProductList = () => {
   const { productType } = useParams();
-  const { user } = useUser();
   const [products, setProducts] = useState<Product[]>([]);
   const [name, setName] = useState<string>();
   const [category, setCategory] = useState<ProductType | null>(productType ? productType as unknown as ProductType : null);
@@ -37,6 +35,12 @@ export const ProductList = () => {
   };
 
   useEffect(() => {
+    getAllProducts({ pageSize: 10, productName: name, productType: category, price: price }).then((response) => {
+      setProducts(response)
+    });
+  }, [name, category, price]);
+
+  useEffect(() => {
     getAllProducts({ pageSize: 10, productName: name, productType: category, price: price, page: currentPage }).then((response) => {
       if (response.length !== 0) {
         setProducts(response)
@@ -45,7 +49,7 @@ export const ProductList = () => {
         setExistNextPage(false)
       }
     });
-  }, [name, category, price, currentPage]);
+  }, [currentPage]);
 
   return (
     <div className={styles.productsArea}>
@@ -56,21 +60,21 @@ export const ProductList = () => {
             <label htmlFor="name" className={styles.filterTitles}>Nombre</label>
             <input type="text" id="name" name="name" value={name} onChange={(ev) => setName(ev.target.value)} />
             <label className={styles.filterTitles}>Categoría</label>
-            <div>
+            <div className={styles.radioButtonsContainer}>
+              <input className={styles.radioInput} type="checkbox" id="category" name="category" checked={category === ProductType.BOARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.BOARD_GAMES)} />
               <label htmlFor="category">Juegos de mesa</label>
-              <input type="checkbox" id="category" name="category" checked={category === ProductType.BOARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.BOARD_GAMES)} />
             </div>
-            <div>
+            <div className={styles.radioButtonsContainer}>
+              <input className={styles.radioInput} type="checkbox" id="category" name="category" checked={category === ProductType.CARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.CARD_GAMES)} />
               <label htmlFor="category">Juegos de cartas</label>
-              <input type="checkbox" id="category" name="category" checked={category === ProductType.CARD_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.CARD_GAMES)} />
             </div>
-            <div>
+            <div className={styles.radioButtonsContainer}>
+              <input className={styles.radioInput} type="checkbox" id="category" name="category" checked={category === ProductType.ROLE_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.ROLE_GAMES)} />
               <label htmlFor="category">Juegos de rol</label>
-              <input type="checkbox" id="category" name="category" checked={category === ProductType.ROLE_GAMES} onChange={(ev) => handleCategoryType(ev, ProductType.ROLE_GAMES)} />
             </div>
-            <div>
+            <div className={styles.radioButtonsContainer}>
+              <input className={styles.radioInput} type="checkbox" id="category" name="category" checked={category === ProductType.MERCHANDISING} onChange={(ev) => handleCategoryType(ev, ProductType.MERCHANDISING)} />
               <label htmlFor="category">Merchandising</label>
-              <input type="checkbox" id="category" name="category" checked={category === ProductType.MERCHANDISING} onChange={(ev) => handleCategoryType(ev, ProductType.MERCHANDISING)} />
             </div>
             <label className={styles.filterTitles} htmlFor="price">Precio</label>
             <div className={styles.priceFilter}>
@@ -81,9 +85,9 @@ export const ProductList = () => {
         </div>
         <div>
           <div className={styles.productList}>
-            {products.map((product) => {
+            {products.length !== 0 ? products.map((product) => {
               return <ProductPreview productImageURL={product.productImageURL} productName={product.productName} price={product.price} productID={product.productID} key={product.productID} />
-            })}
+            }) : <div>No se han encontrado productos con esas coincidencias</div>}
           </div>
           <div className={styles.pageButtonsArea}>
             <button className={styles.pageButtons} onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>

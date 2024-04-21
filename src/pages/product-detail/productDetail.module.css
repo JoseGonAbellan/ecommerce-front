@@ -1,12 +1,14 @@
-.container{
-    padding: 150px;
-}
 
 .productDetail{
+    margin-top: 3%;
     display: flex;
     gap: 150px;
 }
 
 .productImage{
-    width: 45%;
+    width: 35%;
+}
+
+.buttonProductDetail {
+    width: 100%;
 }

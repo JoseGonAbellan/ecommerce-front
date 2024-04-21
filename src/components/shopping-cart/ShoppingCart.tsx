@@ -1,9 +1,9 @@
 
 import { useEffect, useRef } from "react";
+import { FiTrash2 } from "react-icons/fi";
 import { useCart } from "../../context/shopping-cart.context";
 import { useCustomRouter } from "../../router/custom-router";
 import styles from "./shoppingCart.module.css";
-
 interface CartMenuProps {
   open: boolean;
   onClose: () => void;
@@ -51,13 +51,13 @@ export const ShoppingCart: React.FC<CartMenuProps> = ({ open, onClose }) => {
         <div>
           <ul>
             {productsOrders.length !== 0 && productsOrders.map((product) => (
-              <li key={product.id}>
-                {product.name} - x {product.quantity}
-                <button onClick={() => removeFromCart(product.id)}>Eliminar</button>
+              <li className={styles.productElement} key={product.id}>
+                {product.name} x {product.quantity}
+                <FiTrash2 className={styles.deleteIcon} onClick={() => removeFromCart(product.id)}>Eliminar</FiTrash2 >
               </li>
             ))}
           </ul>
-          <button onClick={goProcessOrder}>Realizar el pedido</button>
+          <button className={styles.buttonOrder} onClick={goProcessOrder}>Realizar el pedido</button>
         </div>
       )}
 

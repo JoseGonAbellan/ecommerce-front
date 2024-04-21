@@ -7,17 +7,16 @@ import { RolEnum, User } from "../../common/types/user";
 import { ChangePassword } from "../../components/change-password/ChangePassword";
 import { OrderPreview } from "../../components/order-preview/OrderPreview";
 import { useUser } from "../../context/user-context";
-import { useCustomRouter } from "../../router/custom-router";
 import { Routes } from "../../router/routes";
 import { getOrdersByUser } from "../../services/orders-service";
 import { updateUser } from "../../services/user-service";
+import styles from "./userDetail.module.css";
 import { validationSchema } from "./validation-schema";
 
 
 export const UserDetail = () => {
   const [orders, setOrders] = useState<OrderPropierties[]>([])
   const { user } = useUser();
-  const { goOrderDetail } = useCustomRouter();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [existNextPage, setExistNextPage] = useState<boolean>(true);
@@ -71,12 +70,13 @@ export const UserDetail = () => {
 
 
   if (!user) {
-    return <div style={{ padding: 200 }}>
+    return <div>
       <p>Logeate <Link to={Routes.LOGIN_PAGE}>aqui</Link></p>
     </div>
   }
   return (
-    <div style={{ padding: 200 }}>
+    <div className={styles.containerForms}>
+
       <h2>Tus Datos</h2>
       <Formik
         initialValues={{
@@ -91,7 +91,7 @@ export const UserDetail = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
+        <Form className={styles.updateUserForm}>
           <div>
             <label htmlFor="userName">Nombre de usuario</label>
             <Field name="userName" type="text" />
@@ -121,25 +121,30 @@ export const UserDetail = () => {
             <Field name="userPhone" type="tel" />
             <ErrorMessage name="userPhone" component="div" />
           </div>
-          <button type="submit">Enviar</button>
+          <button className={styles.buttonUserForm} type="submit">Actualizar datos</button>
         </Form>
       </Formik>
       <ChangePassword />
 
 
       <h2>Tus Pedidos</h2>
-      {orders.length ?
-        <div>
-          {orders.map((order) => {
-            return (
-              <OrderPreview order={order} />
-            )
-          })}
-          <button onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
-          <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
-        </div>
-        :
-        <div>No tienes pedidos</div>}
-    </div>
+      {
+        orders.length ?
+          <div className={styles.myOrdersContainer}>
+            {orders.map((order) => {
+              return (
+                <OrderPreview order={order} />
+              )
+            })}
+            <div className={styles.myOrdersPagContainer}>
+              <button className={styles.paginationButtons} onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
+              <button className={styles.paginationButtons} onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
+            </div>
+         
+          </div>
+          :
+          <div>No tienes pedidos</div>
+      }
+    </div >
   );
 }

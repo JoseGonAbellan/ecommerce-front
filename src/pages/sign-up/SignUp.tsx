@@ -31,7 +31,7 @@ export const SignUp = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Form style={{padding:200}}>
+      <Form>
         <div>
           <label htmlFor="userName">Nombre de usuario</label>
           <Field name="userName" type="text" />

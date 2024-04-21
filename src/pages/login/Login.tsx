@@ -25,7 +25,7 @@ export const Login = () => {
   };
 
   return (
-    <div style={{ padding: 200 }}>
+    <div>
       <Formik
         initialValues={{
           email: '',

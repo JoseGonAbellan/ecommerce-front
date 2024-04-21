@@ -4,9 +4,33 @@
 
 .menu{
     position: absolute;
-    top: 135px;
-    right: 8%;
+    top: 100%;
+    right: 3%;
     background-color: white;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 15%;
+    border-radius: 5%;
+    padding: 20px;
+    background-color:  #CEDEBD;
+    gap: 10px;
+    
+}
+.productElement{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 3px 0;
+}
+
+.deleteIcon {
+    font-size: 16px;
+
+}
+.buttonOrder{
+    width: 70%;
+    margin-top: 10%;
 }

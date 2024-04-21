@@ -1,0 +1,20 @@
+
+.actionButtonsTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8%;
+}
+.myOrdersPagContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+
+.paginationButtons {
+    width: 10%;
+}
+.actionButtons {
+     width: 30%;
+}

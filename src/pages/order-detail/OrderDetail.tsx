@@ -81,7 +81,7 @@ export const OrderDetail = () => {
     };
 
     return (
-        <div style={{ padding: 200 }}>
+        <div >
             {order && (
                 <div>
                     <h2>Detalle del pedido {order.orderId}</h2>

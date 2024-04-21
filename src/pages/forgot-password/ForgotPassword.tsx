@@ -17,7 +17,7 @@ export const ForgotPassword = () => {
         }
     };
     return (
-        <div style={{ padding: 200 }}>
+        <div>
             <Formik
                 initialValues={{
                     email: '',
@@ -25,7 +25,7 @@ export const ForgotPassword = () => {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                <Form style={{ padding: 200 }}>
+                <Form>
                     <div>
                         <label htmlFor="email">Email</label>
                         <Field name="email" type="text" />

@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-
-    width: 240px; /* Ancho fijo para cada elemento */
-    height: auto; /* Altura automática según el contenido */
-    margin-right: 10px; /* Espacio entre elementos, ajusta según sea necesario */
+    width: calc(20% - 20px);
 }
 
 .productPreviewImage{
+    max-width: 40%;
     width: 40%;
 }
 
@@ -26,4 +25,5 @@
 .price{
   font-style: italic;
   text-align: center;
+  margin-top: 0;
 }

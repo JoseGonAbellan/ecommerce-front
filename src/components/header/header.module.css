@@ -4,6 +4,7 @@
     background-color: #435334;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo{
@@ -29,6 +30,8 @@
 .iconsArea{
     font-size: 25px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding-right: 2%;
     gap: 37px;
     margin-left: 5%;

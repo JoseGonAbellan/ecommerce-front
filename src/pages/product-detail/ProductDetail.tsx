@@ -18,11 +18,11 @@ export const ProductDetail = () => {
   }, [id]);
 
   if (!product) {
-    return <div className={styles.container}>El producto no existe</div>
+    return <div>El producto no existe</div>
   }
 
   return (
-    <div className={styles.container}>
+    <div >
       <h1>{product?.productName}</h1>
       <div className={styles.productDetail}>
         <img src={product?.productImageURL} className={styles.productImage} />
@@ -33,7 +33,7 @@ export const ProductDetail = () => {
           <p>Precio: {product?.price} €</p>
           <p>Stock: {product?.stock}</p>
           <p>Categoría: {product?.productType}</p>
-          <button disabled={product?.stock === 0} onClick={() => addToCart(product)}>Añadir al carrito</button>
+          <button className={styles.buttonProductDetail} disabled={product?.stock === 0} onClick={() => addToCart(product)}>Añadir al carrito</button>
         </div>
       </div>
 

@@ -11,5 +11,6 @@ export enum Routes {
     PROCESS_ORDER_PAGE = "/process-order",
     ORDER_DETAIL_PAGE = "/order-detail",
     ORDERS_LIST = "/orders-list",
-    FORGOT_PASSWORD = "/forgot-password"
+    FORGOT_PASSWORD = "/forgot-password",
+    DELETE_PRODUCTS = "/delete-products"
 }

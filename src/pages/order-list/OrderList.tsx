@@ -54,7 +54,7 @@ export const OrderList = () => {
 
 
     return (
-        <div style={{ padding: 200 }}>
+        <div>
             <h2>Listado de todos los pedidos de la plataforma</h2>
             <input
                 type="text"
