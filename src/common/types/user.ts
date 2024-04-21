@@ -1,6 +1,6 @@
-export enum RolEnum{
-    USER= "User",
-    ADMIN= "Admin"
+export enum RolEnum {
+    USER = "User",
+    ADMIN = "Admin"
 }
 
 export type User = {
@@ -18,3 +18,9 @@ export type SimpleUser = {
     email: string;
     password: string;
 };
+
+export type changePasswordUser = {
+    email: string;
+    newPassword: string;
+    oldPassword: string;
+}

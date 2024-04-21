@@ -3,13 +3,16 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/user-context';
+import { CartProvider } from './context/shopping-cart.context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <UserProvider>
+  <CartProvider>
     <App />
+  </CartProvider>
   </UserProvider>
 );
 

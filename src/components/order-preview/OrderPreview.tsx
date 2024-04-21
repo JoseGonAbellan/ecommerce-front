@@ -3,14 +3,14 @@ import { transformDate } from "../../common/utils/transform-date";
 import { useCustomRouter } from "../../router/custom-router";
 
 type OrderPreviewPropierties = {
-    order: OrderPropierties
+  order: OrderPropierties
 }
-export const OrderPreview: React.FC<OrderPreviewPropierties> = ({order}) => {
-  const {goProductDetailPage} = useCustomRouter()
-  const {orderDate, totalAmount, orderId} = order;
+export const OrderPreview: React.FC<OrderPreviewPropierties> = ({ order }) => {
+  const { goOrderDetail } = useCustomRouter()
+  const { orderDate, totalAmount, orderId } = order;
   const date = transformDate(orderDate)
   return (
-    <div onClick={() => console.log(orderId)}>
+    <div onClick={() => goOrderDetail(order.orderId as number)}>
       <p>Número de pedido: {orderId}</p>
       <p>Fecha de pedido: {date}</p>
       <p>Precio: {totalAmount}</p>

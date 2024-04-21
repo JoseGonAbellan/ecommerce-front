@@ -9,7 +9,6 @@ import { useCustomRouter } from "../../router/custom-router";
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const {goProductsPage} = useCustomRouter();
-  const handleConsole = () => {console.log("He pulsado")}
 
   useEffect(() => {
     getAllProducts().then((response) => setProducts(response));

@@ -1,0 +1,12 @@
+.menuHidden{
+    display: none;
+}
+
+.menu{
+    position: absolute;
+    top: 135px;
+    right: 8%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}

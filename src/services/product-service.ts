@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Product, ProductType } from "../common/types/product"
+import { CreateProduct, Product, ProductType } from "../common/types/product"
 
 export type FilterProducts = {
     productName?: string,
@@ -27,4 +27,38 @@ export const getAllProducts = (filters?: FilterProducts) => {
 
 export const getProductById = (id: number) => {
     return axios.get<Product>(`${apiUrl}/products/${id}`).then((respone) => respone.data)
+}
+type createProduct = {
+    form: CreateProduct;
+    token: string;
+}
+
+export const createProduct = ({form, token} : createProduct) => {
+   return axios.post<Product>(`${apiUrl}/products`, form,  {
+    headers:{
+        Authorization: token
+    }
+   }).then((respone) => respone.data)
+}
+
+export const deleteProduct = (id: number, token: string) => {
+   return axios.delete<Product>(`${apiUrl}/products/${id}`,  {
+    headers:{
+        Authorization: token
+    }
+   }).then((respone) => respone.data)
+}
+
+type updateProduct  = {
+    form: CreateProduct;
+    token: string;
+    id: number
+}
+
+export const updateProduct = ({form, token, id} : updateProduct) => {
+   return axios.put<Product>(`${apiUrl}/products/${id}`, form,   {
+    headers:{
+        Authorization: token
+    }
+   }).then((respone) => respone.data)
 }

@@ -15,3 +15,5 @@ export type Product = {
 };
 
 export type SimpleProduct = Pick<Product, 'productID' | 'productName' | 'productImageURL' | 'price'>;
+
+export type CreateProduct = Omit<Product, 'productID'>;
