@@ -78,7 +78,7 @@ export const ProductList = () => {
             </div>
             <label className={styles.filterTitles} htmlFor="price">Precio</label>
             <div className={styles.priceFilter}>
-              <input type="range" id="price" name="price" min={0} max={200} value={price} onChange={(ev) => setPrice(parseInt(ev.target.value))} />
+              <input type="range" id="price" name="price" min={0} max={200} value={price} onChange={(ev) => setPrice(parseInt(ev.target.value))} className={styles.priceInput} />
               <p className={styles.priceFilterNum}>{price} €</p>
             </div>
           </form>

@@ -89,5 +89,8 @@
 }
 
 .radioInput{
-
+width: 5%;
+}
+.priceInput{
+    padding: 0;
 }

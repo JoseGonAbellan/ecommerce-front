@@ -6,6 +6,7 @@ import { useCustomRouter } from '../../router/custom-router';
 import { Routes } from '../../router/routes';
 import { loginUser } from '../../services/user-service';
 import { validationSchema } from './validation-schema';
+import styles from "./login.module.css";
 
 export const Login = () => {
   const { setUser } = useUser();
@@ -25,7 +26,7 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <Formik
         initialValues={{
           email: '',
@@ -34,7 +35,7 @@ export const Login = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
+        <Form className={styles.loginForm}>
           <div>
             <label htmlFor="email">Email</label>
             <Field name="email" type="text" />
@@ -50,8 +51,11 @@ export const Login = () => {
           <button type="submit">Enviar</button>
         </Form>
       </Formik>
-      <Link to={Routes.SIGN_UP_PAGE}>Si no tienes una cuenta, regístrate aquí</Link>
-      <Link to={Routes.FORGOT_PASSWORD}>¿Has olvidado tu contraseña?</Link>
+      <div className={styles.linksLoginContainer}>
+        <Link className={styles.linkLogin}  to={Routes.SIGN_UP_PAGE}>Si no tienes una cuenta, regístrate aquí</Link>
+        <Link className={styles.linkLogin} to={Routes.FORGOT_PASSWORD}>¿Has olvidado tu contraseña?</Link>
+      </div>
+
 
     </div>
   );

@@ -5,9 +5,9 @@ import { RolEnum } from "../../common/types/user";
 import { useUser } from "../../context/user-context";
 import { useCustomRouter } from "../../router/custom-router";
 import { deleteProduct, getAllProducts } from "../../services/product-service";
-import styles from "./deleteProduct.module.css";
+import styles from "./productAdmin.module.css";
 
-export const DeleteProduct = () => {
+export const ProductAdminList = () => {
 
     const { user } = useUser();
     const { goCreateProduct } = useCustomRouter();
@@ -54,7 +54,7 @@ export const DeleteProduct = () => {
 
     return (
         <div>
-            <h2>Eliminar un producto</h2>
+            <h2>Lista de todos los productos</h2>
             <table >
                 <thead>
                     <tr>
@@ -71,8 +71,8 @@ export const DeleteProduct = () => {
                             <td>{product.productName}</td>
                             <td>{product.price}</td>
                             <td className={styles.actionButtonsTable}>
-                                <button className={styles.actionButtons}  onClick={() => handleDeleteProduct(product.productID)}>Eliminar</button>
-                                <button className={styles.actionButtons}  onClick={() => goCreateProduct(product.productID)}>Editar producto</button>
+                                <button className={styles.actionButtons} onClick={() => handleDeleteProduct(product.productID)}>Eliminar</button>
+                                <button className={styles.actionButtons} onClick={() => goCreateProduct(product.productID)}>Editar producto</button>
                             </td>
                         </tr>
                     ))}

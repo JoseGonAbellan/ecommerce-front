@@ -1,0 +1,14 @@
+.createProductContainer{
+    width: 50%;
+}
+
+.createProductForm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.createProductButton {
+    margin-top: 1%;
+    width: 30%;
+}

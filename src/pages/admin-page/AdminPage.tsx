@@ -1,4 +1,4 @@
-import { FiEdit2, FiFilePlus, FiTrash2 } from "react-icons/fi";
+import { FiAlignLeft, FiEdit2, FiFilePlus } from "react-icons/fi";
 import { RolEnum } from '../../common/types/user';
 import { useUser } from '../../context/user-context';
 import { useCustomRouter } from '../../router/custom-router';
@@ -6,7 +6,7 @@ import styles from "./adminPage.module.css";
 
 export const AdminPage = () => {
   const { user } = useUser();
-  const { goCreateProduct, goOrderList, goDeleteProducts } = useCustomRouter();
+  const { goCreateProduct, goOrderList, goAdminProducts: goDeleteProducts } = useCustomRouter();
 
 
 
@@ -26,8 +26,8 @@ export const AdminPage = () => {
         <p>Cambiar el estado de un pedido</p>
       </div>
       <div className={styles.adminPageSections} onClick={() => goDeleteProducts()}>
-        <FiTrash2 className={styles.iconsAdmin} />
-        <p>Eliminar productos</p>
+        <FiAlignLeft className={styles.iconsAdmin} />
+        <p>Listado de productos</p>
       </div>
     </div>
   );

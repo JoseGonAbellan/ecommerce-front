@@ -1,0 +1,41 @@
+.orderResume{
+border-top: 2px solid black;
+ border-bottom: 2px solid black;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ margin: 1% 0;
+ gap: 40px;
+}
+.orderItem {
+padding: 1% 0;
+
+}
+
+.span{
+    font-weight: bold;
+}
+.formOrder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 1%;
+}
+.formInputs{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.optionsPaymentContainer {
+    width: 100%;
+}
+
+
+.formButton {
+    width: 20%;
+    margin-top: 1%;
+}

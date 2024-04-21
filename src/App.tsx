@@ -14,7 +14,7 @@ import { UserDetail } from "./pages/user-detail/UserDetail";
 
 import { RolEnum } from "./common/types/user";
 import ContentContainer from "./components/container-body/ContainerBody";
-import { DeleteProduct } from "./pages/delete-product/DeleteProduct";
+import { ProductAdminList } from "./pages/product-list-admin/ProductListAdmin";
 import { ForgotPassword } from "./pages/forgot-password/ForgotPassword";
 import { OrderDetail } from "./pages/order-detail/OrderDetail";
 import { OrderList } from "./pages/order-list/OrderList";
@@ -42,7 +42,7 @@ function App() {
             <Route path={RoutesEnum.ORDERS_LIST} element={<OrderList />} />
             <Route path={`${RoutesEnum.ORDER_DETAIL_PAGE}/:id?`} element={<OrderDetail />} />
             <Route path={RoutesEnum.FORGOT_PASSWORD} element={user !== null ? <Navigate to={RoutesEnum.USER_DETAIL_PAGE} /> : <ForgotPassword />} />
-            <Route path={RoutesEnum.DELETE_PRODUCTS} element={user?.rol !== RolEnum.ADMIN ? <Navigate to={RoutesEnum.HOME_PAGE} /> : <DeleteProduct />} />
+            <Route path={RoutesEnum.PRODUCT_ADMIN_LIST} element={user?.rol !== RolEnum.ADMIN ? <Navigate to={RoutesEnum.HOME_PAGE} /> : <ProductAdminList />} />
           </Routes>
         </ContentContainer>
       </BrowserRouter>

@@ -1,0 +1,26 @@
+.orderListContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.orderElement {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+    cursor: pointer;
+    border-top: 1px solid black; 
+    border-bottom: 1px solid black; 
+    margin-bottom: 10px;
+    width: 100%;
+}
+.paginationContainer{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.buttonPaginationOrder {
+    width: 20%;
+}

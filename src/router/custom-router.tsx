@@ -19,7 +19,7 @@ export interface CustomRouter {
     goOrderList: () => void;
     goForgotPassword: () => void;
 
-    goDeleteProducts: () => void;
+    goAdminProducts: () => void;
 }
 
 export const useCustomRouter = (): CustomRouter => {
@@ -73,8 +73,8 @@ export const useCustomRouter = (): CustomRouter => {
         goForgotPassword() {
             return navigate(Routes.FORGOT_PASSWORD)
         },
-        goDeleteProducts() {
-            return navigate(Routes.DELETE_PRODUCTS)
+        goAdminProducts() {
+            return navigate(Routes.PRODUCT_ADMIN_LIST)
         },
     }
 }

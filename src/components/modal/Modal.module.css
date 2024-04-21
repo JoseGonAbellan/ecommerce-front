@@ -16,22 +16,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   max-width: 80%;
+
 }
 
 .modalContent {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .closeButton {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
   margin-top: 16px;
 }
 
-.closeButton:hover {
-  background-color: #d32f2f;
-}

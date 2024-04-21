@@ -4,6 +4,7 @@ import { OrderPropierties } from "../../common/types/order";
 import { useUser } from "../../context/user-context";
 import { useCustomRouter } from "../../router/custom-router";
 import { getAllOrders } from "../../services/orders-service";
+import styles from "./orderList.module.css";
 
 export const OrderList = () => {
 
@@ -39,7 +40,7 @@ export const OrderList = () => {
             filters: {
                 orderId: parseInt(orderId),
                 page: currentPage,
-                pageSize: 15
+                pageSize: 10
             }
         }).then((response) => {
             if (response.length !== 0) {
@@ -50,11 +51,11 @@ export const OrderList = () => {
             }
 
         })
-    }, [orderId])
+    }, [orderId, currentPage])
 
 
     return (
-        <div>
+        <div className={styles.orderListContainer}>
             <h2>Listado de todos los pedidos de la plataforma</h2>
             <input
                 type="text"
@@ -64,14 +65,16 @@ export const OrderList = () => {
             />
             <ul>
                 {orders?.map((order) => (
-                    <li key={order.orderId} onClick={() => goOrderDetail(order.orderId as number)}>
-                        Pedido ID: {order.orderId}, Estado: {order.orderStatus}, Usuario ID: {order.userId}
+                    <li className={styles.orderElement} key={order.orderId} onClick={() => goOrderDetail(order.orderId as number)}>
+                        <p>Pedido ID: {order.orderId}</p>
+                        <p>Estado: {order.orderStatus}</p>
+                        <p>Usuario ID: {order.userId}</p>
                     </li>
                 ))}
             </ul>
-            <div>
-                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
-                <button onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
+            <div className={styles.paginationContainer}>
+                <button className={styles.buttonPaginationOrder} onClick={handlePreviousPage} disabled={currentPage === 1}>Página anterior</button>
+                <button className={styles.buttonPaginationOrder}  onClick={handleNextPage} disabled={!existNextPage}>Página siguiente</button>
             </div>
         </div>
     )

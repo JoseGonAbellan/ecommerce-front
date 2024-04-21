@@ -1,0 +1,22 @@
+.orderDetailList{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black; 
+    border-bottom: 1px solid black; 
+    padding: 1% 0;
+
+}
+
+
+.tableDetailProduct{
+    margin-bottom: 2%;
+}
+
+.orderDetailImage {
+    width: 15%;
+}
+
+.changeStatusButton {
+    margin-top: 1%;
+    width: 20%;
+}

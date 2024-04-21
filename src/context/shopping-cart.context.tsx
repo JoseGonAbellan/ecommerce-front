@@ -23,15 +23,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [productsOrders, setProductsOrders] = useState<ProductOrder[]>(() => {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
-      const parsedCart = JSON.parse(storedCart);
-      if (Array.isArray(parsedCart.products)) {
-        return parsedCart.products.map((product: Product) => ({
-          id: product.productID,
-          name: product.productName,
-          price: product.price,
-          quantity: 1,
-        }));
-      }
+      return JSON.parse(storedCart);
     }
     return [];
   });
@@ -57,18 +49,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const removeFromCart = (productId: number) => {
     setProductsOrders((prevProductsOrders) => {
-      const productIndex = prevProductsOrders.findIndex((p) => p.id === productId);
-      if (productIndex !== -1) {
-        const updatedProductsOrders = [...prevProductsOrders];
-        if (updatedProductsOrders[productIndex].quantity > 1) {
-          updatedProductsOrders[productIndex].quantity -= 1;
-        } else {
-          updatedProductsOrders.splice(productIndex, 1);
+      const updatedProductsOrders = prevProductsOrders.map((p) => {
+        if (p.id === productId) {
+          if (p.quantity > 1) {
+            return { ...p, quantity: p.quantity - 1 };
+          }
+          return null;
         }
-        return updatedProductsOrders;
-      } else {
-        return prevProductsOrders;
-      }
+        return p;
+      }).filter(Boolean) as ProductOrder[];
+      return updatedProductsOrders;
     });
   };
 
@@ -79,12 +69,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const clearCart = () => {
-    setProductsOrders([]); 
+    setProductsOrders([]);
   };
 
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify({ products: productsOrders }));
+    localStorage.setItem('cart', JSON.stringify(productsOrders));
   }, [productsOrders]);
 
   return (
@@ -93,7 +83,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     </CartContext.Provider>
   );
 };
-
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

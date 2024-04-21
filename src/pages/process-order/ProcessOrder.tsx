@@ -7,6 +7,7 @@ import { useCart } from "../../context/shopping-cart.context";
 import { useUser } from "../../context/user-context";
 import { useCustomRouter } from "../../router/custom-router";
 import { createOrder, createOrderForm } from "../../services/orders-service";
+import styles from "./processOrder.module.css";
 import { validationSchema } from "./validation-schema";
 
 export const ProcessOrder = () => {
@@ -72,13 +73,17 @@ export const ProcessOrder = () => {
     return (
         <div>
             <h2>Resumen del Pedido</h2>
-            <ul>
-                {productsOrders.map((productOrder) => (
-                    <li key={productOrder.id}>
-                        {productOrder.name} - Cantidad: {productOrder.quantity} - Precio Unitario: {productOrder.price} € - Precio Total: {(productOrder.price * productOrder.quantity)} €
+            {productsOrders.map((productOrder) => (
+                <ul className={styles.orderResume}>
+                    <li className={styles.orderItem} key={productOrder.id}>
+                        {productOrder.name}
                     </li>
-                ))}
-            </ul>
+                    <li className={styles.orderItem}>Cantidad: {productOrder.quantity}</li>
+                    <li className={styles.orderItem}>Precio Unitario: {productOrder.price} € </li>
+
+                </ul>
+            ))}
+            <div><span className={styles.span}>Precio Total:</span> {totalPrice} €</div>
 
             <Formik
                 initialValues={{
@@ -89,9 +94,9 @@ export const ProcessOrder = () => {
                 onSubmit={handlePlaceOrder}
             >
                 {({ values, errors, touched, setFieldValue }) => (
-                    <Form>
+                    <Form className={styles.formOrder}>
                         <h2>Opciones de Envío</h2>
-                        <div>
+                        <div className={styles.formInputs}>
                             <label htmlFor="homeDelivery">Enviar a domicilio</label>
                             <Field
                                 type="radio"
@@ -105,7 +110,7 @@ export const ProcessOrder = () => {
                                 checked={values.shippingOptions === ShippingOptions.HOME}
                             />
                         </div>
-                        <div>
+                        <div className={styles.formInputs}>
                             <label htmlFor="storePickup">Recoger en tienda</label>
                             <Field
                                 type="radio"
@@ -125,9 +130,9 @@ export const ProcessOrder = () => {
                         )}
 
                         {values.shippingOptions === ShippingOptions.STORE && (
-                            <div>
+                            <div className={styles.optionsPaymentContainer}>
                                 <h2>Opciones de Pago</h2>
-                                <div>
+                                <div className={styles.formInputs}>
                                     <label htmlFor="inStorePayment">Pagar en tienda</label>
                                     <Field
                                         type="radio"
@@ -141,9 +146,9 @@ export const ProcessOrder = () => {
                         )}
 
                         {values.shippingOptions === ShippingOptions.HOME && (
-                            <div>
+                            <div className={styles.optionsPaymentContainer}>
                                 <h2>Opciones de Pago</h2>
-                                <div>
+                                <div className={styles.formInputs}>
                                     <label htmlFor="cashOnDelivery">Pagar contra reembolso</label>
                                     <Field
                                         type="radio"
@@ -160,7 +165,7 @@ export const ProcessOrder = () => {
                             <div>{errors.paymentMethod}</div>
                         )}
 
-                        <button type="submit">Realizar Pedido</button>
+                        <button className={styles.formButton} type="submit">Realizar Pedido</button>
                     </Form>
                 )}
             </Formik>

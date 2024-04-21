@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { RolEnum, User } from '../../common/types/user';
 import { createUser } from '../../services/user-service';
 import { validationSchema } from './validation-schema';
+import styles from "./signUp.module.css";
 
 export const SignUp = () => {
   const handleSubmit = async (values: User, {setSubmitting, resetForm}: FormikHelpers<User>) => {
@@ -18,6 +19,7 @@ export const SignUp = () => {
   };
 
  return (
+  <div className={styles.signUpContainer}>
     <Formik
       initialValues={{
         userName: '',
@@ -31,7 +33,7 @@ export const SignUp = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
+      <Form className={styles.formSignUp}>
         <div>
           <label htmlFor="userName">Nombre de usuario</label>
           <Field name="userName" type="text" />
@@ -68,8 +70,9 @@ export const SignUp = () => {
           <ErrorMessage name="userPassword" component="div" />
         </div>
 
-        <button type="submit">Enviar</button>
+         <button className={styles.buttonSignUp} type="submit">Enviar</button>
       </Form>
     </Formik>
+   </div>
   );
 }
