@@ -26,7 +26,7 @@ export const getOrdersByUser = ({ userId, token, filters }: getOrderPropierties)
     }).then((respone) => respone.data)
 }
 
-type createOrder = {
+type createOrderPropierties = {
     form: createOrderForm,
     token: string,
 }
@@ -40,7 +40,7 @@ export type createOrderForm = {
     shippingOptions: ShippingOptions;
     paymentMethod: PaymentMethod;
 }
-export const createOrder = ({ form, token }: createOrder) => {
+export const createOrder = ({ form, token }: createOrderPropierties) => {
     return axios.post<OrderPropierties>(`${apiUrl}/orders`, form, {
         headers: {
             Authorization: token
