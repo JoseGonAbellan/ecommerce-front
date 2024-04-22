@@ -30,7 +30,6 @@ export const Header = () => {
       <div className={styles.buttons}>
         <Link to={Routes.PRODUCTS_PAGE} className={styles.links}>Productos</Link>
         <Link to={Routes.CONTACT_PAGE} className={styles.links}>Contacto</Link>
-        <p>Sobre Nosotros</p>
       </div>
       <div className={styles.iconsArea}>
         <FiShoppingCart className={styles.icons} onClick={() => setOpenCart(!openCart)} />
